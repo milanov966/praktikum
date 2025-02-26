@@ -23,29 +23,66 @@
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
 }
 
-.gallery img {
-    width: 100%;
-    max-width: 300px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.gallery {
+    display: flex;
+    gap: 10px; /* Adjust space between images */
+    justify-content: center;
+    align-items: flex-start; /* Align images to the top */
+    flex-wrap: wrap; /* Stack images if the screen is small */
 }
+
+.gallery img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional for a smoother look */
+}
+
 
 .slideshow-container {
     position: relative;
     max-width: 100%;
+    width: 600px; /* Set the width of the slideshow */
     margin: auto;
-    overflow: hidden;
+    overflow: hidden; /* Hides overflow to show one image at a time */
 }
 
 .slides {
     display: flex;
-    transition: transform 1s ease-in-out;
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
 }
 
 .slide {
-    min-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
 }
+
+/* Style for navigation buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s ease;
+    z-index: 1;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 
 .video-container {
     margin-top: 30px;
@@ -116,17 +153,6 @@ footer {
 
 
     </style>
-    <script>
-        let slideIndex = 0;
-        function showSlides(){
-            let slides = document.getElementsByClassName(".slides");
-            let totalSlides = document.querySelectorAll(".slide").length;
-            slideIndex = (slideIndex + 1) % totalSlides;
-            slides.style.transform = 'translateX(-${slideIndex * 100}%)';
-            setTimeout(showSlides,5);
-        }
-        window.onload = showSlides;
-    </script>
 </head> 
 <body>
     <nav>
@@ -145,18 +171,55 @@ footer {
             <img src="image3.jpg">
         </div>
         <h2>Slideshow</h2>
-        <div class="slideshow-container">
-            <div class="slides">
-             <img class="slide" src="image4.jpg">
-             <img class="slide" src="image5.jpg">
-             <img class="slide" src="image6.jpg">
-            </div>
-        </div>
+    <div class="slideshow-container">
+    <div class="slides">
+        <img class="slide" src="image4.jpg">
+        <img class="slide" src="image5.jpg">
+        <img class="slide" src="image6.jpg">
+    </div>
+    <!-- navigation buttons -->
+    <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+    <a class="next" onclick="moveSlide(1)">&#10095;</a>
+    </div>
+
         <div class="video-container">
             <h2>Video</h2>
             <iframe width="100%" height="315" src="https://www.youtube.com/embed/_HonL1arbaA" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.querySelectorAll(".slide");
+            let totalSlides = slides.length;
+
+            // Ensure that the slideIndex stays within bounds
+            if (slideIndex >= totalSlides) {
+                slideIndex = 0;
+            } else if (slideIndex < 0) {
+                slideIndex = totalSlides - 1;
+            }
+
+            // Move the slides by changing the transform property of the parent div
+            let slidesContainer = document.querySelector(".slides");
+            slidesContainer.style.transform = "translateX(" + (-slideIndex * 100) + "%)";
+        }
+
+        function moveSlide(n) {
+            slideIndex += n;
+            showSlides();
+        }
+
+        // Initial call to display the first slide
+        showSlides();
+
+        // Optional: Set automatic slide change every 3 seconds
+        setInterval(function() {
+            slideIndex++;
+            showSlides();
+        }, 3000);
+    </script>
     <footer>
         &copy; 2025 all rights protected.
     </footer>
