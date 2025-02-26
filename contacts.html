@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <style>
+               body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #e0e7f1; /* Light blueish background for freshness */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    margin-bottom: 30px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #4a4a4a; /* Slightly darker color for text */
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background-color: #4a90e2; /* Blueish hover color */
+    color: white;
+    transform: translateY(-3px); /* Slight movement for depth */
+}
+
+.animated-button {
+    display: inline-block;
+    padding: 12px 25px;
+    color: white;
+    background-color: #4a90e2; /* Blue background for button */
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    animation: pulse 1.5s infinite;
+}
+
+.animated-button:hover {
+    background-color: #357ab7; /* Slightly darker blue on hover */
+    transform: translateY(-5px); /* Adds interactivity */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #4a90e2; /* Blue footer background */
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="animated-button">Start</a>
+        <a href="about.html">About us</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">Blog</a>
+    </nav>
+    <div class="container">
+        <h1>Contacts</h1>
+        <p>Свържете се с нас чрез имейл или телефон</p>
+        <p><strong>Email:</strong> kmilanov00@gmail.com</p>
+        <p><strong>Phone number</strong> 0894511855</p>
+
+        <h2>Usefull links</h2>
+        <p>Научете повече<a href="about.html"> за нас</a>.</p>
+        <p>Разгледайте нашата<a href="gallery.html"> галерия</a>.</p>
+    </div>
+    <footer>
+        &copy; 2025 all rights protected.
+    </footer>
+</body>
+</html>
